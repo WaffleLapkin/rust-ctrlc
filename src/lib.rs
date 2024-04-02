@@ -141,7 +141,7 @@ where
 
     thread::Builder::new()
         .name("ctrl-c".into())
-        .spawn(move || loop {
+        .spawn::<_, ()>(move || loop {
             unsafe {
                 platform::block_ctrl_c().expect("Critical system error while waiting for Ctrl-C");
             }
